@@ -1,0 +1,15 @@
+{
+    "user": "$User",
+    "objectId": "",
+    "uid": "",
+    "content": "",
+    "pictures" :"$[]String",
+    "commentCount": 0,
+    "likedCount":0,
+    "createdAt": "",
+    "url": "",
+    "urlTitle": "",
+    "urlPic": "",
+    "topic": "$Topic_info"
+    
+}
