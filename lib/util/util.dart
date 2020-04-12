@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Util {
   static String getTimeDuration(String comTime) {
       var nowTime = DateTime.now();
@@ -22,4 +24,8 @@ class Util {
       }
       return 'time error';
     }
+
+    static double setPercentage( percentage, context){
+    return MediaQuery.of(context).size.width * percentage;
+  }
 }
