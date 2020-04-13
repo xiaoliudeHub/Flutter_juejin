@@ -1,6 +1,10 @@
+import 'package:event_bus/event_bus.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:juejin_app/event/event_bus.dart';
+import 'package:juejin_app/event/event_model.dart';
+import 'package:juejin_app/widgets/login_button.dart';
 import './activity_page.dart';
 import './book_page.dart';
 import './index_page.dart';
@@ -20,9 +24,10 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin{
 
 _MyAppState() {
   final router = Router();
-  // final eventBus = EventBus();
+  final eventBus = EventBus();
   Routes.configureRoutes(router);
   Application.router = router;
+  ApplicationEvent.event = eventBus;
 }
 
   final TextStyle tabTextStyleNormal =
@@ -56,11 +61,21 @@ _MyAppState() {
   // var _body;
   // List _appBarTitles = ['首页', '沸点', '小册', '开源库', '活动'];
 
+  String _userName = '';
+  String _userPic = '';
+
   TabController _tabController;
 
   @override
   void initState() {
         _tabController = TabController(length: _bottomTabs.length, vsync: this);
+
+        ApplicationEvent.event.on<UserLoginEvent>().listen((event) {
+           setState(() {
+             _userName = event.userName;
+             _userPic = event.userPic;
+           });
+        });
 
     super.initState();
   }
@@ -80,6 +95,12 @@ _MyAppState() {
         home: Scaffold(
           appBar: AppBar(
             title: Text('Flutter版掘金'),
+            actions: [
+              LoginButton(
+                 userName: _userName,
+                 userPic: _userPic,
+              ),
+            ],
           ),
           body: TabBarView(
             controller: _tabController,

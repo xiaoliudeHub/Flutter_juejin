@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:juejin_app/models/index.dart';
 import 'package:juejin_app/util/util.dart';
 import 'package:juejin_app/widgets/pins_cell_bottom_button.dart';
+import 'package:juejin_app/widgets/repos_list_cell.dart';
 
 class ActivityListCell extends StatelessWidget {
   final Activity_cell activity_cell;
@@ -18,35 +18,36 @@ class ActivityListCell extends StatelessWidget {
           color: Colors.white,
           border: Border(
             bottom: BorderSide(
-              color: Theme.of(context).accentColor,
-              width: 0.5,
+              color: Colors.grey,
+              width: 10,
             ),
           ),
         ),
         child: Column(
           children: [
             Image.network(
-                activity_cell.screenshot,
-                fit: BoxFit.cover,
-                width: Util.setPercentage(1, context),
-                height: 245,
-              ),
+              activity_cell.screenshot,
+              fit: BoxFit.cover,
+              width: Util.setPercentage(1, context),
+              height: 245,
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                // mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    // activity_cell.title,
-                    '哈哈哈哈',
+                    activity_cell.title,
                     style: TextStyle(
                       fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
                     ),
                     overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(height: 20.0),
-                  IconWithText(
+                  IconTextWidget(
                     icon: Icon(Icons.calendar_today),
                     text: activity_cell.startTime,
                   ),
@@ -54,7 +55,7 @@ class ActivityListCell extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      IconWithText(
+                      IconTextWidget(
                         icon: Icon(Icons.location_on),
                         text: activity_cell.city,
                       ),

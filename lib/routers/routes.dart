@@ -5,7 +5,8 @@ class Routes {
   static String root = '/';
   static String articleDetail = '/detail';
   static String swipPage = '/swip';
-
+static String loginPage = '/login';
+   
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(
       handlerFunc: (context, parameters) {
@@ -14,5 +15,6 @@ class Routes {
     );
     router.define(articleDetail, handler: articleDetailHandler);
     router.define(swipPage, handler: swipPageHandler);
+    router.define(loginPage, handler: loginPageHandler);
   }
 }

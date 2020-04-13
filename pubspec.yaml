@@ -36,6 +36,7 @@ dependencies:
   build_runner: ^1.0.0
   json_serializable: ^2.0.0
   flutter_swiper: ^1.1.6 
+  event_bus: ^1.1.1
 
 
 dev_dependencies:
