@@ -1,6 +1,6 @@
-# juejin_app
+# 自学Flutter仿写的掘金APP，内容有参考别的优秀项目
 
-A new Flutter project.
+内容涉及了基本widgets的使用，以及优秀packages的使用。
 
 ## Getting Started
 
